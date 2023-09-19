@@ -12,10 +12,7 @@ public class SoundManager : MonoBehaviour
     public float effectsVolume = 1.0f;
 
     // Sound effect clips
-    public AudioClip hitSound;
-    public AudioClip fallSound;
-    public AudioClip jumpSound;
-    public AudioClip moveSound;
+    public AudioClip[] sounds;
 
     private void Awake()
     {
@@ -37,25 +34,15 @@ public class SoundManager : MonoBehaviour
         effectsVolume = PlayerPrefs.GetFloat("EffectsVolume", 1.0f);
     }
 
-    // Play sound effects
-    public void PlayHitSound()
-    {
-        effectsSource.PlayOneShot(hitSound, effectsVolume * masterVolume);
-    }
 
-    public void PlayFallSound()
+    public void PlaySound(Sound sound)
     {
-        effectsSource.PlayOneShot(fallSound, effectsVolume * masterVolume);
-    }
-
-    public void PlayJumpSound()
-    {
-        effectsSource.PlayOneShot(jumpSound, effectsVolume * masterVolume);
-    }
-
-    public void PlayMoveSound()
-    {
-        effectsSource.PlayOneShot(moveSound, effectsVolume * masterVolume);
+        switch (sound)
+        {
+            case Sound.Jump:
+                effectsSource.PlayOneShot(sounds[(int)sound]);
+                break;
+        }
     }
 
     // Set volume levels
@@ -77,4 +64,8 @@ public class SoundManager : MonoBehaviour
         effectsVolume = volume;
         PlayerPrefs.SetFloat("EffectsVolume", volume);
     }
+}
+public enum Sound
+{
+    Jump
 }
