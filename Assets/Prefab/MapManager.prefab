@@ -44,7 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f62d097634a4547a9aca6685b1b4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6938529389021148546, guid: 3ba48709e415d2d43be773d3239f353f, type: 3}
-  spawnPoint: {x: 2, y: 2}
-  size: {x: 7, y: 0.2}
-  rotation: {x: 0, y: 0, z: 45}
+  ground: {fileID: 6938529389021148546, guid: 3ba48709e415d2d43be773d3239f353f, type: 3}
+  spawnPoint1: {x: -9, y: -2}
+  spawnPoint2: {x: 0, y: -2}
+  spawnPoint3: {x: 9, y: -2}
+  size1: {x: 5.5, y: 1}
+  size2: {x: 5.5, y: 1}
+  size3: {x: 5.5, y: 1}
+  rotation1: {x: 0, y: 0, z: -10}
+  rotation2: {x: 0, y: 0, z: 0}
+  rotation3: {x: 0, y: 0, z: 10}

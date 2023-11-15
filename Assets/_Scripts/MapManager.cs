@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;
-    [SerializeField] Vector2 spawnPoint, size;
-    [SerializeField] Vector3 rotation;
+    [SerializeField] GameObject ground;
+    [SerializeField] Vector2 spawnPoint1, spawnPoint2, spawnPoint3, size1, size2, size3;
+    [SerializeField] Vector3 rotation1, rotation2, rotation3;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPlatform(prefab, spawnPoint, size, rotation);
-        SpawnPlatform(prefab, -spawnPoint, size, -rotation);
+        SpawnPlatform(ground, spawnPoint1, size1, rotation1);
+        SpawnPlatform(ground, spawnPoint2, size2, rotation2);
+        SpawnPlatform(ground, spawnPoint3, size3, rotation3);
     }
 
     public void SpawnPlatform(GameObject _prefab, Vector2 _spawnPoint, Vector2 _size, Vector3 _rotation)
