@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f62d097634a4547a9aca6685b1b4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  error: {fileID: 633561285053673187, guid: ef90d27e20c338643bc9a735e668c3e6, type: 3}
   ground: {fileID: 6938529389021148546, guid: 3ba48709e415d2d43be773d3239f353f, type: 3}
   spawnPoint1: {x: -9, y: -2}
   spawnPoint2: {x: 0, y: -2}
