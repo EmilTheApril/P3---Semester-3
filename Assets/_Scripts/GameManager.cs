@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public partial class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
@@ -22,9 +23,29 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Update()
+    private async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) DrawingFinished();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space Clicked");
+            await FetchJSONFile();
+            Debug.Log("All done");
+            DrawingFinished();
+        }
+    }
+
+    public async Task FetchJSONFile()
+    {
+        bool fileFetched = false;
+        Debug.Log("Fetching Files");
+
+        while (!fileFetched)
+        {
+            //fetchFile
+            await Task.Delay(5000);
+            fileFetched = true;
+        }
+        Debug.Log("Files Fetched");
     }
 
     public void DrawingFinished()

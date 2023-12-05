@@ -12,10 +12,10 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        SpawnPlatform("Ground", spawnPoint2, size2, rotation2);
-        SpawnPlatform("Ground", spawnPoint3, size3, rotation3);
-        ReadJson();
-        Debug.Log(mapData.name + mapData.pos + mapData.scale + mapData.rotation);
+        //SpawnPlatform("Ground", spawnPoint2, size2, rotation2);
+        //SpawnPlatform("Ground", spawnPoint3, size3, rotation3);
+        //ReadJson();
+        //Debug.Log(mapData.name + mapData.pos + mapData.scale + mapData.rotation);
     }
 
     public void ReadJson()
