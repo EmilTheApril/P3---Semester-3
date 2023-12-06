@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -22,16 +23,31 @@ public partial class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-        StartPython();
     }
 
-    private async void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+    }
+
+    private void Update()
+    {
+        StopDrawingStartPython();
+    }
+
+    public async void StopDrawingStartPython()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isDrawing)
         {
-            Debug.Log("Space Clicked");
+            await StartPython();
+
+            Application.OpenURL(Application.dataPath + "/CameraObjectDetection.exe");
+
             await FetchJSONFile();
-            Debug.Log("All done");
+
+            MapManager.instance.ClearMap();
+            MapManager.instance.ReadJson();
+
             DrawingFinished();
         }
     }
@@ -39,23 +55,25 @@ public partial class GameManager : MonoBehaviour
     public async Task FetchJSONFile()
     {
         bool fileFetched = false;
-        Debug.Log("Fetching Files");
 
         while (!fileFetched)
         {
             //fetchFile
-            await Task.Delay(1000);
-            fileFetched = true;
+            string filepath = Application.dataPath + "/data.json";
+            if (File.Exists(filepath))
+            {
+                fileFetched = true;
+            } else await Task.Delay(1000);
         }
-        Debug.Log("Files Fetched");
     }
 
-    public void StartPython() 
+    public async Task StartPython() 
     {
         string filePath = Application.dataPath + "/start.txt";
-        StreamWriter outStream = System.IO.File.CreateText(filePath);
+        StreamWriter outStream = File.CreateText(filePath);
         outStream.WriteLine("");
         outStream.Close();
+        await Task.Delay(1);
     }
 
     public void DrawingFinished()

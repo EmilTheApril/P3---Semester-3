@@ -6,15 +6,25 @@ using System;
 
 public class MapManager : MonoBehaviour
 {
+    public static MapManager instance;
+
     [SerializeField] GameObject error, ground, spike;
     [SerializeField] Vector2 spawnPoint1, spawnPoint2, spawnPoint3, size1, size2, size3;
     [SerializeField] Vector3 rotation1, rotation2, rotation3;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        } else Destroy(this);
+    }
 
     void Start()
     {
         //SpawnPlatform("Ground", spawnPoint2, size2, rotation2);
         //SpawnPlatform("Ground", spawnPoint3, size3, rotation3);
-        ReadJson();
+        //ReadJson();
         //Debug.Log(mapData.name + mapData.pos + mapData.scale + mapData.rotation);
     }
 
@@ -23,15 +33,11 @@ public class MapManager : MonoBehaviour
         string filepath = Application.dataPath + "/data.json";
         try
         {
-            string mapdata = System.IO.File.ReadAllText(filepath);
-            Debug.Log(mapdata);
+            string mapdata = File.ReadAllText(filepath);
 
             // Parse the JSON data into the mapData object
             mapdata = JsonHelper.fixJson(mapdata);
-            Debug.Log(mapdata);
             MapData[] mapData = JsonHelper.FromJson<MapData>(mapdata);
-            Debug.Log(mapData.Length);
-            Debug.Log(mapData[0].pos[0]);
 
             // Check if mapData is not null before accessing its properties
             foreach(MapData _mapData in mapData)
@@ -45,6 +51,8 @@ public class MapManager : MonoBehaviour
                     Debug.LogError("mapData is null!");
                 }
             }
+
+            File.Delete(filepath);
         }
         catch (Exception e)
         {
