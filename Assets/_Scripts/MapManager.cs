@@ -20,7 +20,7 @@ public class MapManager : MonoBehaviour
 
     public void ReadJson()
     {
-        string filepath = "C:/Users/Mu898/Documents/GitHub/P3-Semester-3/Assets/data.json";
+        string filepath = Application.dataPath + "/data.json";
         try
         {
             string mapdata = System.IO.File.ReadAllText(filepath);
