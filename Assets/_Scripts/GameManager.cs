@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public partial class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
+        StartPython();
     }
 
     private async void Update()
@@ -42,10 +44,18 @@ public partial class GameManager : MonoBehaviour
         while (!fileFetched)
         {
             //fetchFile
-            await Task.Delay(5000);
+            await Task.Delay(1000);
             fileFetched = true;
         }
         Debug.Log("Files Fetched");
+    }
+
+    public void StartPython() 
+    {
+        string filePath = Application.dataPath + "/start.txt";
+        StreamWriter outStream = System.IO.File.CreateText(filePath);
+        outStream.WriteLine("");
+        outStream.Close();
     }
 
     public void DrawingFinished()

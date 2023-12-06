@@ -1,1 +1,1 @@
-{"name": "Ground", "pos": [-9, -2], "scale": [5.5, 1], "rotation": [0, 0, -10]}
+[{"name": "Ground", "pos": [-9, -2], "scale": [5.5, 1], "rotation": [0, 0, -10]} , {"name": "Ground", "pos": [9, 2], "scale": [5.5, 1], "rotation": [0, 0, -10]}]
