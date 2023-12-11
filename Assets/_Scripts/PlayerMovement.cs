@@ -23,9 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!finished)
+        if (!finished && !GameManager.instance.isDrawing && GameManager.instance.startGame)
         {
-            if (GameManager.instance.isDrawing) return;
             Move();
             Jump();
         }

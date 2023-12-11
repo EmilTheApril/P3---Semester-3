@@ -9,8 +9,6 @@ public class MapManager : MonoBehaviour
     public static MapManager instance;
 
     [SerializeField] GameObject error, ground, spike;
-    [SerializeField] Vector2 spawnPoint1, spawnPoint2, spawnPoint3, size1, size2, size3;
-    [SerializeField] Vector3 rotation1, rotation2, rotation3;
 
     private void Awake()
     {
@@ -22,10 +20,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        //SpawnPlatform("Ground", spawnPoint2, size2, rotation2);
-        //SpawnPlatform("Ground", spawnPoint3, size3, rotation3);
-        //ReadJson();
-        //Debug.Log(mapData.name + mapData.pos + mapData.scale + mapData.rotation);
+        
     }
 
     public void ReadJson()
@@ -44,7 +39,7 @@ public class MapManager : MonoBehaviour
             {
                 if (_mapData != null)
                 {
-                    SpawnPlatform(_mapData.name, new Vector2(_mapData.pos[0], _mapData.pos[1]), new Vector2(_mapData.scale[0], _mapData.scale[1]), new Vector3(0, 0, _mapData.rotation[2]));
+                    SpawnPlatform(_mapData.name, new Vector2(_mapData.pos[0], 1080f - _mapData.pos[1]), new Vector2(_mapData.scale[0], _mapData.scale[1]), new Vector3(0, 0, _mapData.rotation[2]));
                 }
                 else
                 {
