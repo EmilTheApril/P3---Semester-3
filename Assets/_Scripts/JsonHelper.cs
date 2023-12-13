@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-//Code stolen from https://stackoverflow.com/questions/36239705/serialize-and-deserialize-json-and-json-array-in-unity
+//Code taken from https://stackoverflow.com/questions/36239705/serialize-and-deserialize-json-and-json-array-in-unity
 
 public static class JsonHelper
 {
